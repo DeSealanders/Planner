@@ -23,10 +23,10 @@ class DatabaseConfig {
     private function getLocalDetails() {
         return array(
             'username' => 'root',
-            'password' => 'usbw',
+            'password' => 'root',
             'database' => 'planner',
             'address' => 'localhost'
-        );
+            );
     }
 
     private function getLiveDetails() {
@@ -35,6 +35,6 @@ class DatabaseConfig {
             'username' => 'abc',
             'database' => 'abc',
             'address' => 'localhost'
-        );
+            );
     }
 }
