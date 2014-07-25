@@ -1,5 +1,2 @@
 Planner
 =======
-testcommit
-
-Jordi test
