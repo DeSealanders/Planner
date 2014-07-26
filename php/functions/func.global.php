@@ -6,18 +6,32 @@
  */
 function __autoload($className)
 {
-    // Filepaths to search for classes
-    $filepaths = array(
-        'php/classes/class.' . $className . '.php',
-        'php/funtions/func.' . $className . '.php',
-        'php/config/conf.' . $className . '.php',
-        // Also check for classname - 6 characters (e.g. databaseconfig = database)
-        'php/config/conf.' . substr($className, 0, strlen($className)-6) . '.php'
+    // Filenames
+    $fileNames = array(
+        'class.' . $className . '.php',
+        'func.' . $className . '.php',
+        'conf.' . $className . '.php',
+        'conf.' . substr($className, 0, strlen($className)-6) . '.php'
+
     );
+    // Directories
+    $filepaths = array(
+        'php/classes/',
+        'php/classes/Database/',
+        'php/classes/Events/',
+        'php/funtions/',
+        'php/config/'
+    );
+
+    // Loop through all combinations of filenames and folders
+    // Include all found classes
     foreach ($filepaths as $filepath) {
-        if (file_exists($filepath)) {
-            include $filepath;
-            break;
+        foreach($fileNames as $fileName) {
+            $fullPath = $filepath . $fileName;
+            if (file_exists($fullPath)) {
+                include $fullPath;
+                break;
+            }
         }
     }
 }

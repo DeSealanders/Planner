@@ -41,7 +41,7 @@ class DatabaseManager
             $dbDetails['database']
         );
         if (mysqli_connect_errno()) {
-            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+            Throw new Exception("Failed to connect to MySQL: " . mysqli_connect_error());
         }
     }
 
@@ -51,9 +51,37 @@ class DatabaseManager
      * @param bool $params a list of parameters for prepared statements
      * @return array|null returns the result of the query in the form of an array
      */
-    private function executeQuery($query, $params = false)
+    public function executeQuery($query, $params = false)
     {
-
+        $statement = $this->connection->prepare($query);
+        if (isset($statement) && $statement) {
+            if ($params) {
+                $params = array_merge(array(str_repeat('s', count($params))), array_values($params));
+                $refs = array();
+                foreach ($params as $key => $value) {
+                    $refs[$key] = & $params[$key];
+                }
+                call_user_func_array(array(&$statement, 'bind_param'), $params);
+            }
+            $statement->execute();
+            $result = $statement->get_result();
+            if ($result) {
+                while ($returnValue = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                    $results[] = $returnValue;
+                }
+                if (isset($results)) {
+                    return $results;
+                } else {
+                    return false;
+                }
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            throw new Exception('Unable to execute query: "' . $query . '", please review');
+        }
     }
 
 } 

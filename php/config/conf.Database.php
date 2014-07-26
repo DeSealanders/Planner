@@ -23,7 +23,7 @@ class DatabaseConfig {
     private function getLocalDetails() {
         return array(
             'username' => 'root',
-            'password' => 'root',
+            'password' => 'usbw',
             'database' => 'planner',
             'address' => 'localhost'
             );

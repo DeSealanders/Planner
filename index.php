@@ -9,28 +9,22 @@ require('php/config/conf.Default.php');
 	<script src="js/documentready.js"></script>
 </head>
 <body class="grid">
-	<?php
-	$test = new Test();
-	// $test->helloWorld();
-	$db = DatabaseManager::getInstance();
-	?>
-
-
 	<div class="actions">
 		<button type="button" data-type="grid"><span class="entypo-layout"></span> Grid View</button>
 		<button type="button" data-type="list"><span class="entypo-list"></span> List View</button>
 	</div>
 
 	<div class="story-wrapper">
-		<?php 
-// Create a loop with dummy objects
-		for ($i=0; $i < 10; $i++) { 
-	# code...
+		<?php
+        // Load the eventmanager and request all events
+        $eventManager = EventManager::getInstance();
+		foreach($eventManager->getEvents() as $event) {
 			?>
 			<div class="story">
 				<div class="story-image"><img src="http://placehold.it/500x500"></div>
-				<div class="story-title">That sure does look complicated.</div>
-				<div class="story-desc">Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vestibulum id ligula porta felis euismod semper. Aenean lacinia bibendum nulla sed consectetur.</div>
+				<div class="story-title"><?php echo $event->getName(); ?></div>
+                <div class="story-date"><?php echo $event->getStartDate(); ?></div>
+				<div class="story-desc"><?php echo $event->getDescription(); ?></div>
 			</div>
 			<?php
 		} 
