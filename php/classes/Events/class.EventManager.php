@@ -21,6 +21,8 @@ class EventManager {
     }
 
     public function getEvents() {
+        $eventFactory = EventFactory::getInstance();
+        $eventFactory->loadEvents();
         return $this->events;
     }
 

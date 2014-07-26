@@ -18,6 +18,7 @@ require('php/config/conf.Default.php');
 		<?php
         // Load the eventmanager and request all events
         $eventManager = EventManager::getInstance();
+        EventFactory::getInstance();
 		foreach($eventManager->getEvents() as $event) {
 			?>
 			<div class="story">

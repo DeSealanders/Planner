@@ -31,9 +31,9 @@ class DatabaseConfig {
 
     private function getLiveDetails() {
         return array(
-            'password' => 'abc',
-            'username' => 'abc',
-            'database' => 'abc',
+            'password' => 'LR5NoHh7',
+            'username' => 'tonpeter_planner',
+            'database' => 'tonpeter_planner',
             'address' => 'localhost'
             );
     }

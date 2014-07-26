@@ -8,13 +8,12 @@ class EventFactory {
     private function __construct() {
         $this->eventManager = EventManager::getInstance();
         $this->queryManager = QueryManager::getInstance();
-        $this->loadEvents();
     }
 
     /**
      * Load events from database
      */
-    private function loadEvents() {
+    public function loadEvents() {
         $events = $this->queryManager->getEvents();
         foreach($events as $event) {
             $this->addEvent($event['itemid'], $event['name'], $event['description'], $event['startDate'], $event['endDate'], $event['image']);
