@@ -1,0 +1,156 @@
+/**
+ * Navigation
+ */
+
+ a {
+ 	text-decoration: none;
+ }
+
+ .left {
+ 	float: left;
+ }
+
+ .right {
+ 	float: right;
+ }
+
+ nav {
+
+ 	background-color: #0160ae;
+ 	top: 0;
+ 	left: 0;
+ 	width: 100%;
+ 	box-sizing: border-box;
+ 	z-index: 10000;
+ 	position: fixed;
+ 	margin: 0px 0px 20px;
+ 	line-height: 65px;
+ 	overflow: hidden;
+ 	border: 1px solid #FFF;
+ }
+
+ nav:before, nav:after {
+ 	content: "";
+ 	display: table;
+ 	clear: both;
+ }
+ nav ul {
+ 	margin: 0;
+ 	padding: 0;
+ 	display: inline;
+ 	width: auto;
+ 	height: auto !important;
+ 	list-style: none;
+ 	float: right;
+ }
+
+ nav ul li {
+ 	float: left;
+ 	margin: 0;
+ 	padding: 0;
+ 	text-align: center;
+ 	cursor: pointer;
+ }
+ 
+
+ nav ul li > a {
+ 	padding: 0 20px;
+ 	line-height: 3.125em;
+ 	color: white;
+ 	font-size: 0.875em;
+ 	font-weight: 600;
+ 	width: 100%;
+ }
+
+ nav ul li:hover {
+ 	border-left: 1px solid #1151A3;
+ 	border-right: 1px solid #1151A3;
+ 	background: #0081C9;
+ 	box-shadow: 0px 0px 2px #009FF8;
+ }
+ 
+
+ .logo {
+ 	float: left;
+ 	margin: 0;
+ 	padding: 0 25px;
+ 	font-size: 1.25em;
+ 	font-weight: 700;
+ 	color: #FFF;
+ 	border-left: 1px solid #1151A3;
+ 	border-right: 1px solid #1151A3;
+ 	background: #0081C9;
+ 	box-shadow: 0px 0px 2px #009FF8;
+ }
+
+ #toggle-menu {
+ 	position: absolute;
+ 	right: 1em;
+ 	top: 0;
+ 	display: none;
+ 	cursor: pointer;
+ 	font-size: 1.5em;
+ 	color: #fff4e1;
+ }
+
+ /**
+  * Responsive navigation
+  */
+
+  @media only screen and (max-width: 800px) {
+  	nav ul {
+  		display: none;
+  		float: none;
+  	}
+
+  	nav ul li {
+  		display: block;
+  		width: 100%;
+  		text-align: left;
+  		border-bottom: 1px solid #ffe1ae;
+  		opacity: 0.9;
+  	}
+
+  	.actions {
+  		display: none;
+  	}
+
+  	.logo {
+  		width: 100%;
+  		border: 0;
+  		border-radius: 0;
+  	}
+
+  	#toggle-menu {
+  		display: block;
+  	}
+  }
+
+
+/**
+ * Buttons
+ */
+
+ .actions {
+  float: right;
+  margin-right: 10px;
+}
+
+button {
+  display: inline-block;
+  padding: 5px 15px;
+  border: 1px solid rgba(150,150,150,1);
+  background: rgba(150,150,150,1);
+  color: #fff;
+  border-radius: 3px;
+  vertical-align: middle;
+  line-height: 1;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+  font-size: 13px;
+  outline: none;
+}
+
+button span {
+  display: inline-block;
+  font-size: 15px;
+}
