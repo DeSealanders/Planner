@@ -19,6 +19,7 @@ function __autoload($className)
         'php/classes/',
         'php/classes/Database/',
         'php/classes/Events/',
+        'php/classes/Example/',
         'php/funtions/',
         'php/config/'
     );

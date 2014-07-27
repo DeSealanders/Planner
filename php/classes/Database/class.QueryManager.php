@@ -37,6 +37,25 @@ class QueryManager {
         return $this->databaseManager->executeQuery($query , $params);
     }
 
+    public function deleteEvent($eventId) {
+        $query = "DELETE FROM events WHERE itemid = ?";
+        $params = array($eventId);
+        return $this->databaseManager->executeQuery($query , $params);
+    }
+
+    public function updateEvent(Event $event) {
+        $query = "UPDATE events SET NAME = ?, description = ?, startDate = ?, endDate = ?, image = ? WHERE itemid = ?";
+        $params = array(
+            $event->getName(),
+            $event->getDescription(),
+            $event->getStartDate(),
+            $event->getEndDate(),
+            $event->getImage(),
+            $event->getId()
+        );
+        return $this->databaseManager->executeQuery($query , $params);
+    }
+
     /**
      * Retrieve all events
      * @return array|null

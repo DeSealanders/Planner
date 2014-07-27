@@ -41,10 +41,22 @@ class EventFactory {
      * @param bool $endDate
      * @param bool $image
      */
-    public function addEvent($name, $description, $startDate, $endDate = false, $image = false) {
-        $event = new Event($name, $description, $startDate, $endDate, $image);
+    public function addEvent($id = false, $name, $description, $startDate, $endDate = false, $image = false) {
+        $event = new Event($id, $name, $description, $startDate, $endDate, $image);
         $this->eventManager->addEvent($event);
         $this->queryManager->saveEvent($event);
+        return $event->getId();
+    }
+
+    public function removeEvent($eventId) {
+        $this->eventManager->removeEvent($eventId);
+        $this->queryManager->deleteEvent($eventId);
+    }
+
+    public function editEvent($id = false, $name, $description, $startDate, $endDate = false, $image = false) {
+        $event = new Event($id, $name, $description, $startDate, $endDate, $image);
+        $this->eventManager->editEvent($event);
+        $this->queryManager->updateEvent($event);
     }
 
 } 

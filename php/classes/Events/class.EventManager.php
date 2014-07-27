@@ -27,11 +27,24 @@ class EventManager {
     }
 
     public function addEvent(Event $event) {
-        $this->events[$event->getId()] = $event;
+        if(!isset($this->events[$event->getId()])) {
+            $this->events[$event->getId()] = $event;
+        }
+        else {
+            Throw new Exception('Duplicate event ids found');
+        }
     }
 
-    public function removeEvent(Event $event) {
-        unset($this->events[$event->getId()]);
+    public function removeEvent($eventId) {
+        if(isset($this->events[$eventId])) {
+            unset($this->events[$eventId]);
+        }
+    }
+
+    public function editEvent(Event $event) {
+        if(isset($this->events[$event->getId()])) {
+            $this->events[$event->getId()] = $event;
+        }
     }
 
 } 
