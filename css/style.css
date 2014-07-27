@@ -1,0 +1,168 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+@import url("navigation.css");
+/* entypo */
+[class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background: #DFDFDF;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px;
+    font-family: 'Lato', sans-serif;
+    text-shadow: 0 0 1px rgba(255, 255, 255, 0.004);
+    font-size: 100%;
+    font-weight: 400;
+}
+
+.container{
+    margin-top: 90px;
+}
+
+.toggler {
+    color: #a1a1a4;
+    font-size: 1.25em;
+    margin-left: 8px;
+    text-align: center;
+    cursor: pointer;
+}
+.toggler.active {
+    color: black;
+}
+
+.events {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.event-item {
+    display: block;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 2px;
+    background: white;
+    -webkit-box-shadow: 0 2px 1px rgba(170, 170, 170, 0.25);
+    box-shadow: 0 2px 1px rgba(170, 170, 170, 0.25);
+}
+
+.event-name {
+    font-weight: 400;
+}
+
+.list .event-item {
+    position: relative;
+    padding: 0;
+    font-size: 14px;
+    line-height: 40px;
+}
+.list .event-item .pull-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .list .event-item .pull-right {
+        position: static;
+        line-height: 20px;
+        padding-bottom: 10px;
+    }
+}
+.list .event-location,
+.list .event-date,
+.list .event-description {
+    color: #a1a1a4;
+}
+.list .event-location,
+.list .event-description,
+.list .event-name, {
+    margin: 0 10px;
+}
+.list .event-location {
+    margin-right: 0;
+}
+.list .event-description,
+.list .event-location,
+.list .event-name {
+    vertical-align: middle;
+}
+.list .event-description {
+    display: inline-block;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+
+.list .list-only {
+    display: auto;
+}
+.list .grid-only {
+    display: none !important;
+}
+
+.grid .grid-only {
+    display: auto;
+}
+.grid .list-only {
+    display: none !important;
+}
+
+.grid .event-item {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    height: 200px;
+    width: 250px;
+    margin: 10px;
+}
+@media screen and (max-width: 600px) {
+    .grid .event-item {
+        display: block;
+        width: auto;
+        height: 150px;
+        margin: 10px auto;
+    }
+}
+.grid .event-name {
+    display: block;
+    max-width: 80%;
+    font-size: 16px;
+    line-height: 20px;
+}
+.grid .event-location {
+    font-size: 11px;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+.grid .event-location,
+.grid .event-description {
+    color: #a1a1a4;
+}
+
+.grid .event-date {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    font-size: 13px;
+}
+
+.grid .event-description {
+    font-size: 12px;
+    line-height: 20px;
+}
+

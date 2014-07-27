@@ -1,62 +1,44 @@
 $(document).ready(function () {
-  helloWorld();
-  listOrGrid();
-
-  menuSetup();
-
-
+    menuSetup();
+    setupListOrGrid();
 });
+function menuSetup() {
+    var w = $(window).width(),
+        toggle = $('#toggle-menu'),
+        menu = $('nav ul'),
+        hasChild = $('.has-child'),
+        dropdown = $('.dropdown');
 
-function helloWorld() {
-  console.log('Hello world');
-}
+    $(function () {
+        $(toggle).on('click', function (e) {
+            e.preventDefault();
+            menu.toggle();
+        });
 
-function listOrGrid() {
-  $('button').on('click',function(){
-    
-    var type = $(this).data('type');
-    var width = $( document ).width();
-    
-    if ( type === "list") {
-      $('body').removeClass('grid');    
-    } else if ( type === "grid" ) {
-      $('body').addClass('grid');
-    } 
-  });
-
-  $(window).resize(function() {
-    if ($(window).width() <= 800) {
-     $('body').removeClass('grid');
-   }
-   else {
-    $('body').addClass('grid');
-  }
-});
-}
-
-function menuSetup(){
-  var w = $(window).width(),
-  toggle    = $('#toggle-menu'),
-  menu    = $('nav ul'),
-  hasChild = $('.has-child'),
-  dropdown = $('.dropdown');
-
-  $(function() {
-    $(toggle).on('click', function(e) {
-      e.preventDefault();
-      menu.toggle();
-    });
-    
-    $(hasChild).click(function(e) {
-      e.preventDefault();
-      dropdown.toggle();
-    });
-  });
-
-  $(window).resize(function(){
-    if(w > 320 && menu.is(':hidden')) {
-      menu.removeAttr('style');}
+        $(hasChild).click(function (e) {
+            e.preventDefault();
+            dropdown.toggle();
+        });
     });
 
-
+    $(window).resize(function () {
+        if (w > 320 && menu.is(':hidden')) {
+            menu.removeAttr('style');
+        }
+    });
 }
+
+function setupListOrGrid() {
+    $(function () {
+        return $('[data-toggle]').on('click', function () {
+            var toggle;
+            toggle = $(this).addClass('active').attr('data-toggle');
+            $(this).siblings('[data-toggle]').removeClass('active');
+            return $('.events').removeClass('grid list').addClass(toggle);
+        });
+    });
+}
+
+
+
+
