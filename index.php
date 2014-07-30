@@ -1,21 +1,38 @@
 <?php include_once("header.php"); ?>
+<span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
+<span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>
 
-    <div class="story-wrapper">
-        <?php
-        // Load the eventmanager and request all events
-        $eventManager = EventManager::getInstance();
-        EventFactory::getInstance();
-        foreach ($eventManager->getEvents() as $event) {
-            ?>
-            <div class="story">
-                <div class="story-image"><img src="http://placehold.it/500x500"></div>
-                <div class="story-title"><?php echo $event->getName(); ?></div>
-                <div class="story-date"><?php echo $event->getStartDate(); ?></div>
-                <div class="story-desc"><?php echo $event->getDescription(); ?></div>
-            </div>
-        <?php
-        }
+<ul class="events grid">
+    <?php
+    // Load the eventmanager and request all events
+    $eventManager = EventManager::getInstance();
+    EventFactory::getInstance();
+    foreach ($eventManager->getEvents() as $event) {
         ?>
+        <li class="event-item">
 
-    </div>
+    <span class="event-name">
+      <?php echo $event->getName(); ?>
+    </span>
+
+    <span class="event-location">
+      Locatie
+    </span>
+
+            <div class="pull-right">
+
+      <span class="event-date">
+        <?php echo $event->getStartDate(); ?> - <?php echo $event->getEndDate(); ?>
+      </span>
+
+       <span class="event-description grid-only">
+        <?php echo $event->getDescription(); ?>
+      </span>
+            </div>
+        </li>
+    <?php
+    }
+    ?>
+</ul>
+
 <?php include_once("footer.php"); ?>

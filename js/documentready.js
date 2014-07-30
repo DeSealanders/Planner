@@ -1,6 +1,7 @@
 $(document).ready(function () {
     menuSetup();
     setupListOrGrid();
+    setDutchTranslations();
 });
 function menuSetup() {
     var w = $(window).width(),
@@ -37,6 +38,17 @@ function setupListOrGrid() {
             return $('.events').removeClass('grid list').addClass(toggle);
         });
     });
+}
+
+function setDutchTranslations(){
+    $.fn.datetimepicker.dates['nl'] = {
+        days: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
+        daysShort: ["Zon", "Maa", "Din", "Woe", "Don", "Vrij", "Zat"],
+        daysMin: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
+        months: ["Januari","Februari","Maart","April", "Mei","Juni", "Juli","Augustus","September","Oktober", "November","December"],
+        monthsShort: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
+        today: "Vandaag"
+    };
 }
 
 
