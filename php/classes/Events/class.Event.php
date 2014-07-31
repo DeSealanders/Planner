@@ -8,8 +8,9 @@ class Event {
     private $startDate;
     private $endDate;
     private $image;
+    private $userid;
 
-    public function __construct($id = false, $name, $description, $startDate, $endDate = false, $image = false) {
+    public function __construct($id = false, $name, $description, $startDate, $endDate = false, $image = false, $userid) {
         // Set an id if none is provided
         if(!$id) {
             $this->id = uniqid('', true);
@@ -22,6 +23,7 @@ class Event {
         $this->startDate = $startDate;
         $this->endDate = $endDate;
         $this->image = $image;
+        $this->userid = $userid;
     }
 
     public function getId() {
@@ -46,6 +48,10 @@ class Event {
 
     public function getImage() {
         return $this->image;
+    }
+
+    public function getUserid() {
+        return $this->userid;
     }
 
 } 

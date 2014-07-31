@@ -2,27 +2,8 @@
 
 class EventFactory {
 
-    private $eventManager;
-    private $queryManager;
-
     private function __construct() {
-        $this->eventManager = EventManager::getInstance();
-        $this->queryManager = QueryManager::getInstance();
-    }
 
-    /**
-     * Load events from database
-     */
-    public function loadEvents($period) {
-        $events = $this->queryManager->getEvents($period);
-        if($events) {
-            foreach($events as $event) {
-                $this->addEvent($event['itemid'], $event['name'], $event['description'], $event['startDate'], $event['endDate'], $event['image']);
-            }
-        }
-        else {
-            Throw new Exception('No events found');
-        }
     }
 
     /**
@@ -39,6 +20,21 @@ class EventFactory {
     }
 
     /**
+     * Load events from database
+     */
+    public function loadEvents($period) {
+        $events = QueryManager::getInstance()->getEvents($period);
+        if($events) {
+            foreach($events as $event) {
+                $this->addEvent($event['itemid'], $event['name'], $event['description'], $event['startDate'], $event['endDate'], $event['image'], $event['userid']);
+            }
+        }
+        else {
+            Throw new Exception('No events found');
+        }
+    }
+
+    /**
      * Add an event
      * @param $name
      * @param $description
@@ -46,22 +42,22 @@ class EventFactory {
      * @param bool $endDate
      * @param bool $image
      */
-    public function addEvent($id = false, $name, $description, $startDate, $endDate = false, $image = false) {
-        $event = new Event($id, $name, $description, $startDate, $endDate, $image);
-        $this->eventManager->addEvent($event);
-        $this->queryManager->saveEvent($event);
+    public function addEvent($id = false, $name, $description, $startDate, $endDate = false, $image = false, $userid) {
+        $event = new Event($id, $name, $description, $startDate, $endDate, $image, $userid);
+        EventManager::getInstance()->addEvent($event);
+        QueryManager::getInstance()->saveEvent($event);
         return $event->getId();
     }
 
     public function removeEvent($eventId) {
-        $this->eventManager->removeEvent($eventId);
-        $this->queryManager->deleteEvent($eventId);
+        EventManager::getInstance()->removeEvent($eventId);
+        QueryManager::getInstance()->deleteEvent($eventId);
     }
 
-    public function editEvent($id = false, $name, $description, $startDate, $endDate = false, $image = false) {
-        $event = new Event($id, $name, $description, $startDate, $endDate, $image);
-        $this->eventManager->editEvent($event);
-        $this->queryManager->updateEvent($event);
+    public function editEvent($id = false, $name, $description, $startDate, $endDate = false, $image = false, $userid) {
+        $event = new Event($id, $name, $description, $startDate, $endDate, $image, $userid);
+        EventManager::getInstance()->editEvent($event);
+        QueryManager::getInstance()->updateEvent($event);
     }
 
 } 

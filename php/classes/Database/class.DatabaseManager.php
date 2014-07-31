@@ -63,6 +63,7 @@ class DatabaseManager
                 }
                 call_user_func_array(array(&$statement, 'bind_param'), $params);
             }
+            //$this->printDebugInfo($query, $params);
             $statement->execute();
             $result = $statement->get_result();
             if ($result) {
@@ -80,8 +81,16 @@ class DatabaseManager
             }
         }
         else {
+            $this->printDebugInfo($query, $params);
             throw new Exception('Unable to execute query: "' . $query . '", please review');
         }
+    }
+
+    private function printDebugInfo($query, $params) {
+        echo 'Query: ';
+        var_dump($query);
+        echo 'Parameters: ';
+        var_dump($params);
     }
 
 } 
