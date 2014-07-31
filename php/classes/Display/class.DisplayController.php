@@ -56,7 +56,8 @@ class DisplayController {
     }
 
     /**
-     * Create a specified period based on the type of view
+     * Retrieve events based on a period
+     * A period is created from the type and a datum within that period
      * E.g. MonthView + 05-07-2014 will result in: 01-07-2014 00:00 through 01-08-2014 00:00
      * @param $date date which falls in the period
      * @param $type type of view (day, month or year)
