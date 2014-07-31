@@ -4,6 +4,7 @@
 
 <ul class="events grid">
     <?php
-        DisplayController::getInstance()->renderMonth('27-07-2014');
+        //DisplayController::getInstance()->renderMonth('27-07-2014');
+        DisplayController::getInstance()->renderList();
     ?>
 <?php include_once("footer.php"); ?>

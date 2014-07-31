@@ -55,6 +55,16 @@ class DisplayController {
         echo $yearView->getHtml();
     }
 
+
+    /**
+     * Retrieve events for a year and render the view
+     * @param $date specified date within the year to render
+     */
+    public function renderList() {
+        $yearView = new ListView(false, $this->getEvents(false, 'list'));
+        echo $yearView->getHtml();
+    }
+
     /**
      * Retrieve events based on a period
      * A period is created from the type and a datum within that period
@@ -85,6 +95,9 @@ class DisplayController {
                 date('Y-01-01 H:i', (strtotime($date . '+1 year')))
             );
             return $this->eventManager->getEvents($period);
+        }
+        else if($type == 'list') {
+            return $this->eventManager->getEvents();
         }
         else {
             Throw new Exception('Unknown calendar view called');
