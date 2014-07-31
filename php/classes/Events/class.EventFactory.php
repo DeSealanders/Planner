@@ -13,10 +13,15 @@ class EventFactory {
     /**
      * Load events from database
      */
-    public function loadEvents() {
-        $events = $this->queryManager->getEvents();
-        foreach($events as $event) {
-            $this->addEvent($event['itemid'], $event['name'], $event['description'], $event['startDate'], $event['endDate'], $event['image']);
+    public function loadEvents($period) {
+        $events = $this->queryManager->getEvents($period);
+        if($events) {
+            foreach($events as $event) {
+                $this->addEvent($event['itemid'], $event['name'], $event['description'], $event['startDate'], $event['endDate'], $event['image']);
+            }
+        }
+        else {
+            Throw new Exception('No events found');
         }
     }
 

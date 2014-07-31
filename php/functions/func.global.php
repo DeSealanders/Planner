@@ -20,6 +20,7 @@ function __autoload($className)
         'php/classes/Database/',
         'php/classes/Events/',
         'php/classes/Example/',
+        'php/classes/Display/',
         'php/funtions/',
         'php/config/'
     );
@@ -47,4 +48,9 @@ function isLive()
         return false;
     }
     return true;
+}
+
+
+function getAmountOfDaysInMonth($date) {
+    return cal_days_in_month(CAL_GREGORIAN, date('m', strtotime($date)), date('y', strtotime($date)));
 }

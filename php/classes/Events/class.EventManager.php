@@ -20,19 +20,8 @@ class EventManager {
         return $instance;
     }
 
-    public function getEvents() {
-        $eventFactory = EventFactory::getInstance();
-        $eventFactory->loadEvents();
-        return $this->events;
-    }
-
     public function addEvent(Event $event) {
-        if(!isset($this->events[$event->getId()])) {
-            $this->events[$event->getId()] = $event;
-        }
-        else {
-            Throw new Exception('Duplicate event ids found');
-        }
+        $this->events[$event->getId()] = $event;
     }
 
     public function removeEvent($eventId) {
@@ -45,6 +34,15 @@ class EventManager {
         if(isset($this->events[$event->getId()])) {
             $this->events[$event->getId()] = $event;
         }
+        else {
+            Throw new Exception('No such event found');
+        }
+    }
+
+    public function getEvents($period = array()) {
+        $eventFactory = EventFactory::getInstance();
+        $eventFactory->loadEvents($period);
+        return $this->events;
     }
 
 } 

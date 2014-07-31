@@ -37,12 +37,22 @@ class QueryManager {
         return $this->databaseManager->executeQuery($query , $params);
     }
 
+    /**
+     * Delete an event based on the eventid
+     * @param $eventId the eventid of the event which needs deleting
+     * @return array|null
+     */
     public function deleteEvent($eventId) {
         $query = "DELETE FROM events WHERE itemid = ?";
         $params = array($eventId);
         return $this->databaseManager->executeQuery($query , $params);
     }
 
+    /**
+     * Update an existing event based on the eventid
+     * @param Event $event the event to update
+     * @return array|null
+     */
     public function updateEvent(Event $event) {
         $query = "UPDATE events SET NAME = ?, description = ?, startDate = ?, endDate = ?, image = ? WHERE itemid = ?";
         $params = array(
@@ -60,7 +70,20 @@ class QueryManager {
      * Retrieve all events
      * @return array|null
      */
-    public function getEvents() {
+    public function getEvents($period) {
+        // A period is specified
+        if(!empty($period)) {
+
+            // Two dates are specified
+            if(count($period) == 2) {
+
+                // Build query using prepared statement
+                $query = "SELECT * FROM EVENTS AS e WHERE (e.startDate > ? AND e.startDate < ?) OR (e.endDate > ? AND e.endDate < ?)";
+                $params = array($period[0], $period[1], $period[1], $period[0]);
+                return $this->databaseManager->executeQuery($query, $params);
+            }
+        }
+        // Otherwise return all events
         $query = "SELECT * FROM events";
         return $this->databaseManager->executeQuery($query);
     }
