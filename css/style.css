@@ -26,6 +26,14 @@ body {
 .container{
     margin-top: 90px;
 }
+.user {
+    float: right;
+    margin-right: -85px;
+    margin-top: -25px;
+}
+.user .name, .user .username {
+    font-weight: bold;
+}
 
 .toggler {
     color: #a1a1a4;

@@ -6,10 +6,7 @@
  */
 class DisplayController {
 
-    private $eventManager;
-
     private function __construct() {
-        $this->eventManager = EventManager::getInstance();
         date_default_timezone_set('utc');
     }
 
@@ -80,24 +77,24 @@ class DisplayController {
                 date('Y-m-d H:i', strtotime($date)),
                 date('Y-m-d H:i', (strtotime($date . '+1 day')))
             );
-            return $this->eventManager->getEvents($period);
+            return EventManager::getInstance()->getEvents($period);
         }
         else if($type == 'month') {
             $period = array(
                 date('Y-m-01 H:i', strtotime($date)),
                 date('Y-m-01 H:i', (strtotime($date . '+1 month')))
             );
-            return $this->eventManager->getEvents($period);
+            return EventManager::getInstance()->getEvents($period);
         }
         else if($type == 'year') {
             $period = array(
                 date('Y-01-01 H:i', strtotime($date)),
                 date('Y-01-01 H:i', (strtotime($date . '+1 year')))
             );
-            return $this->eventManager->getEvents($period);
+            return EventManager::getInstance()->getEvents($period);
         }
         else if($type == 'list') {
-            return $this->eventManager->getEvents();
+            return EventManager::getInstance()->getEvents();
         }
         else {
             Throw new Exception('Unknown calendar view called');

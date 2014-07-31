@@ -3,7 +3,7 @@
 class QueryManager {
 
     private function __construct() {
-        $this->databaseManager = DatabaseManager::getInstance();
+
     }
 
     /**
@@ -25,16 +25,17 @@ class QueryManager {
      * @return array|null
      */
     public function saveEvent(Event $event) {
-        $query = "INSERT INTO events (itemid, name, description, startDate, endDate, image) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO events (itemid, name, description, startDate, endDate, image, userid) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $params = array(
             $event->getId(),
             $event->getName(),
             $event->getDescription(),
             $event->getStartDate(),
             $event->getEndDate(),
-            $event->getImage()
+            $event->getImage(),
+            $event->getUserid()
         );
-        return $this->databaseManager->executeQuery($query , $params);
+        return DatabaseManager::getInstance()->executeQuery($query , $params);
     }
 
     /**
@@ -45,7 +46,7 @@ class QueryManager {
     public function deleteEvent($eventId) {
         $query = "DELETE FROM events WHERE itemid = ?";
         $params = array($eventId);
-        return $this->databaseManager->executeQuery($query , $params);
+        return DatabaseManager::getInstance()->executeQuery($query , $params);
     }
 
     /**
@@ -54,23 +55,24 @@ class QueryManager {
      * @return array|null
      */
     public function updateEvent(Event $event) {
-        $query = "UPDATE events SET NAME = ?, description = ?, startDate = ?, endDate = ?, image = ? WHERE itemid = ?";
+        $query = "UPDATE events SET NAME = ?, description = ?, startDate = ?, endDate = ?, image = ?, userid = ? WHERE itemid = ?";
         $params = array(
             $event->getName(),
             $event->getDescription(),
             $event->getStartDate(),
             $event->getEndDate(),
             $event->getImage(),
+            $event->getUserid(),
             $event->getId()
         );
-        return $this->databaseManager->executeQuery($query , $params);
+        return DatabaseManager::getInstance()->executeQuery($query , $params);
     }
 
     /**
      * Retrieve all events
      * @return array|null
      */
-    public function getEvents($period) {
+    public function getEvents($period = array()) {
         // A period is specified
         if(!empty($period)) {
 
@@ -78,14 +80,32 @@ class QueryManager {
             if(count($period) == 2) {
 
                 // Build query using prepared statement
-                $query = "SELECT * FROM EVENTS AS e WHERE (e.startDate > ? AND e.startDate < ?) OR (e.endDate > ? AND e.endDate < ?)";
-                $params = array($period[0], $period[1], $period[1], $period[0]);
-                return $this->databaseManager->executeQuery($query, $params);
+                $query = "SELECT * FROM events AS e WHERE (e.startDate > ? AND e.startDate < ?) OR (e.endDate > ? AND e.endDate < ?)";
+                $params = array($period[0], $period[1], $period[0], $period[1]);
+
+                // If an user is found
+                if($user = UserManager::getInstance()->getUser()) {
+                    $query .= " AND userid = ?";
+                    $params[] = $user->getUserId();
+                }
+                return DatabaseManager::getInstance()->executeQuery($query, $params);
             }
         }
         // Otherwise return all events
         $query = "SELECT * FROM events";
-        return $this->databaseManager->executeQuery($query);
+        // If an user is found
+        if($user = UserManager::getInstance()->getUser()) {
+            $query .= " WHERE userid = ?";
+            $params = array($user->getUserId());
+            return DatabaseManager::getInstance()->executeQuery($query, $params);
+        }
+        return DatabaseManager::getInstance()->executeQuery($query);
+    }
+
+    public function getUserByLink($link) {
+        $query = "SELECT * FROM users WHERE pagelink = ?;";
+        $params = array($link);
+        return DatabaseManager::getInstance()->executeQuery($query, $params);
     }
 
 } 

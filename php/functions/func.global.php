@@ -21,6 +21,7 @@ function __autoload($className)
         'php/classes/Events/',
         'php/classes/Example/',
         'php/classes/Display/',
+        'php/classes/Users/',
         'php/funtions/',
         'php/config/'
     );

@@ -1,6 +1,7 @@
 <?php
 
 class EventManager {
+
     private $events;
 
     private function __construct() {
@@ -40,8 +41,7 @@ class EventManager {
     }
 
     public function getEvents($period = array()) {
-        $eventFactory = EventFactory::getInstance();
-        $eventFactory->loadEvents($period);
+        EventFactory::getInstance()->loadEvents($period);
         return $this->events;
     }
 

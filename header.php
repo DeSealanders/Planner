@@ -15,7 +15,7 @@ require('php/config/conf.Default.php');
 <nav role="navigation">
     <span class="entypo-menu" id="toggle-menu"></span>
 
-    <div class="logo">Planner</div>
+    <a href="index.php"><div class="logo">Planner</div></a>
 
     <ul>
         <li><a href="index.php" title="Planner">Index</a></li>
@@ -28,3 +28,7 @@ require('php/config/conf.Default.php');
 </nav>
 
 <div class="container">
+
+        <?php if($user = UserManager::getInstance()->getUser()) { ?>
+        <div class="user"><p>Logged in as <span class="name"><?php echo $user->getName(); ?></span> <span class="username">(<?php echo $user->getUsername(); ?>)</span></div>
+        <?php } ?>
