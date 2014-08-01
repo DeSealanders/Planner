@@ -2,18 +2,6 @@
  * Navigation
  */
 
-a {
-    text-decoration: none;
-}
-
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
 nav {
 
     background-color: #0160ae;

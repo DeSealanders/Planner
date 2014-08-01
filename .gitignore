@@ -8,3 +8,5 @@
 .idea/workspace.xml
 php/config/conf.Database.php
 php/config/conf.Database.php
+.idea/dataSources.xml
+.idea/dataSources.xml

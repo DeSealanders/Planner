@@ -54,13 +54,21 @@ class DisplayController {
 
 
     /**
-     * Retrieve events for a year and render the view
-     * @param $date specified date within the year to render
+     * Retrieve events list and render the view
      */
     public function renderList() {
-        $yearView = new ListView(false, $this->getEvents(false, 'list'));
-        echo $yearView->getHtml();
+        $listView = new ListView(false, $this->getEvents(false, 'list'));
+        echo $listView->getHtml();
     }
+
+    /**
+     * Retrieve form to add events and render the view
+     */
+    public function renderAddEventForm(){
+        $addEventForm = new AddEventView();
+        echo $addEventForm->getHtml();
+    }
+
 
     /**
      * Retrieve events based on a period

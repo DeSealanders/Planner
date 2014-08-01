@@ -7,7 +7,6 @@ require('php/config/conf.Default.php');
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-combined.min.css">
     <script src="js/bootstrap-datetimepicker.min.js"></script>
     <script src="js/documentready.js"></script>
 </head>
@@ -30,5 +29,5 @@ require('php/config/conf.Default.php');
 <div class="container">
 
         <?php if($user = UserManager::getInstance()->getUser()) { ?>
-        <div class="user"><p>Logged in as <span class="name"><?php echo $user->getName(); ?></span> <span class="username">(<?php echo $user->getUsername(); ?>)</span></div>
+        <div class="user right"><p>Logged in as <span class="name"><?php echo $user->getName(); ?></span> <span class="username">(<?php echo $user->getUsername(); ?>)</span></div>
         <?php } ?>

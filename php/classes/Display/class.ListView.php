@@ -1,12 +1,15 @@
 <?php
+
 /**
  * Subclass of a GeneralView
  * This class is responsible for displaying the DayView
  * Class MonthView
  */
-class ListView extends GeneralView {
+class ListView extends GeneralView
+{
 
-    public function __construct($date = false, $events) {
+    public function __construct($date = false, $events)
+    {
         parent::__construct($date, $events);
     }
 
@@ -14,9 +17,10 @@ class ListView extends GeneralView {
      * Returns the Html for this view
      * @return string
      */
-    public function getHtml() {
+    public function getHtml()
+    {
         ob_start();
-        foreach($this->getEvents() as $event) {
+        foreach ($this->getEvents() as $event) {
             echo $this->getEventHtml($event);
         }
         return ob_get_clean();
@@ -27,30 +31,32 @@ class ListView extends GeneralView {
      * @param $event
      * @return string
      */
-    public function getEventHtml($event) {
+    public function getEventHtml($event)
+    {
         ob_start();
         ?>
         <li class="event-item">
 
-            <span class="event-name">
-            <?php echo $event->getName(); ?>
-            </span>
+            <span class="event-name"><?php echo $event->getName(); ?></span>
 
-            <span class="event-location">
-            Locatie
-            </span>
+            <span class="event-location"><span class="entypo-location event-icon"></span>Locatie</span>
 
             <div class="pull-right">
-
                 <span class="event-date">
-                <?php echo $event->getStartDate(); ?> - <?php echo $event->getEndDate(); ?>
+                    <span class="entypo-clock event-icon"></span><?php echo $event->getStartDate(); ?>
+                    <span class="grid-only whiteline"></span>
+                    <span class="list-only list-seperator"></span>
+                    <span class="entypo-clock event-icon"></span><?php echo $event->getEndDate(); ?>
                 </span>
+
 
                 <span class="event-description grid-only">
-                <?php echo $event->getDescription(); ?>
+                    <span class="entypo-info event-icon"></span><?php echo $event->getDescription(); ?>
                 </span>
 
+
             </div>
+
         </li>
         <?php
         return ob_get_clean();

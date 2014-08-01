@@ -1,10 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 @import url(http://weloveiconfonts.com/api/?family=entypo);
 @import url("navigation.css");
-/* entypo */
-[class*="entypo-"]:before {
-    font-family: 'entypo', sans-serif;
-}
+@import url("bootstrap-import.css");
 
 * {
     -webkit-box-sizing: border-box;
@@ -14,8 +11,7 @@
 
 body {
     background: #DFDFDF;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 100%;
     padding: 10px;
     font-family: 'Lato', sans-serif;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.004);
@@ -23,14 +19,26 @@ body {
     font-weight: 400;
 }
 
-.container{
+a {
+    text-decoration: none;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.container {
     margin-top: 90px;
 }
+
 .user {
-    float: right;
-    margin-right: -85px;
-    margin-top: -25px;
+    margin-top: -35px;
 }
+
 .user .name, .user .username {
     font-weight: bold;
 }
@@ -42,6 +50,7 @@ body {
     text-align: center;
     cursor: pointer;
 }
+
 .toggler.active {
     color: black;
 }
@@ -63,7 +72,18 @@ body {
 }
 
 .event-name {
-    font-weight: 400;
+    font-weight: 700;
+}
+
+.grid .event-name {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #EEE;
+}
+
+.list .event-name{
+    padding: 0px 10px;
+    border-right: 1px solid #EEE;
+    margin-right: 10px;
 }
 
 .list .event-item {
@@ -72,6 +92,7 @@ body {
     font-size: 14px;
     line-height: 40px;
 }
+
 .list .event-item .pull-right {
     position: absolute;
     right: 0;
@@ -85,35 +106,40 @@ body {
         padding-bottom: 10px;
     }
 }
-.list .event-location,
-.list .event-date,
-.list .event-description {
-    color: #a1a1a4;
-}
+
 .list .event-location,
 .list .event-description,
+.list .event-date {
+    color: #a1a1a4;
+}
+
+.list .event-location,
+.list .event-date,
 .list .event-name, {
     margin: 0 10px;
 }
+
 .list .event-location {
     margin-right: 0;
 }
-.list .event-description,
+
+.list .event-date,
 .list .event-location,
 .list .event-name {
     vertical-align: middle;
 }
-.list .event-description {
+
+.list .event-date {
     display: inline-block;
-    width: 100px;
+    padding: 0px 10px;
     white-space: nowrap;
     overflow: hidden;
 }
 
-
 .list .list-only {
     display: auto;
 }
+
 .list .grid-only {
     display: none !important;
 }
@@ -121,6 +147,7 @@ body {
 .grid .grid-only {
     display: auto;
 }
+
 .grid .list-only {
     display: none !important;
 }
@@ -129,10 +156,11 @@ body {
     position: relative;
     display: inline-block;
     vertical-align: top;
-    height: 200px;
+    height: 100%;
     width: 250px;
     margin: 10px;
 }
+
 @media screen and (max-width: 600px) {
     .grid .event-item {
         display: block;
@@ -141,36 +169,55 @@ body {
         margin: 10px auto;
     }
 }
+
 .grid .event-name {
     display: block;
-    max-width: 80%;
     font-size: 16px;
     line-height: 20px;
 }
+
 .grid .event-location {
     font-size: 11px;
     line-height: 16px;
     text-transform: uppercase;
 }
+
 .grid .event-location,
-.grid .event-description {
+.grid .event-date {
     color: #a1a1a4;
 }
 
-.grid .event-date {
+.grid .event-description {
     display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: relative;
+    margin-top: 10px;
     width: 100%;
-    padding: 20px;
+    padding: 10px 0px;
     border-top: 1px solid #eee;
     font-size: 13px;
 }
 
-.grid .event-description {
+.grid .event-date {
     font-size: 12px;
     line-height: 20px;
 }
 
+.whiteline{
+    content: '\A';
+    display: block;
+}
+
+.list-seperator{
+    content: '-';
+    padding: 0px 10px;
+}
+
+/* entypo */
+[class*="entypo-"]:before {
+    font-family: 'entypo', sans-serif;
+}
+
+.event-icon{
+    margin-right: 5px;
+    color: #A1A1A4;
+}
