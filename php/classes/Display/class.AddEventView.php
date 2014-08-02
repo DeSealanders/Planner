@@ -11,9 +11,49 @@ class AddEventView
     public function getHtml()
     {
         ob_start();
-
         echo $this->createView();
+        return ob_get_clean();
+    }
 
+    public function createView()
+    {
+        ob_start();
+        ?>
+        <div class="addEventForm">
+            <h3>Naam</h3>
+            <input type="text" placeholder="Naam"></input>
+
+
+            <h3>Kies de datum en tijd waarop het event start</h3>
+            <div class="startDateTime">
+                <?php echo $this->dateBox("startDate"); ?>
+                <?php echo $this->timeBox("startTime"); ?>
+
+            </div>
+
+
+
+            <input type="checkbox" id="eventEndDateCheckbox" />
+            <label for="eventEndDateCheckbox" id="eventEndDateLabel">
+                Eendaags event
+            </label>
+
+            <h3 id="eventEndDateText">Kies de datum en tijd waarop het event eindigt</h3>
+            <div class="endDateTime">
+                <?php echo $this->dateBox("endDate"); ?>
+                <?php echo $this->timeBox("endTime"); ?>
+            </div>
+
+            <h3>Locatie</h3>
+            <input type="text" placeholder="Locatie"></input>
+
+            <h3>Beschrijving</h3>
+            <input type="text" placeholder="Beschrijving"></input>
+
+            <button type="submit" class="addEventButton">Opslaan</button>
+
+        </div>
+        <?php
         return ob_get_clean();
     }
 
@@ -22,7 +62,8 @@ class AddEventView
         ob_start();
         ?>
         <div id="<?php echo $timeID; ?>" class="input-append">
-            <input data-format="hh:mm" type="text" placeholder="Kies een tijd" readonly></input>
+            <input data-format="hh:mm" type="text" placeholder="Kies een tijd" id="<?php echo 'input-' . $timeID; ?>"
+                   readonly></input>
             <span class="add-on">
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"> </i>
             </span>
@@ -39,7 +80,7 @@ class AddEventView
             });
         </script>
 
-    <?php
+        <?php
         return ob_get_clean();
     } // Close timeBox
     public function dateBox($dateID)
@@ -47,7 +88,8 @@ class AddEventView
         ob_start();
         ?>
         <div id="<?php echo $dateID; ?>" class="input-append">
-            <input data-format="dd-MM-yyyy" type="text" placeholder="Kies een datum" readonly></input>
+            <input data-format="dd-MM-yyyy" type="text" placeholder="Kies een datum"
+                   id="<?php echo 'input-' . $dateID; ?>" readonly></input>
             <span class="add-on">
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
             </span>
@@ -66,22 +108,9 @@ class AddEventView
             });
         </script>
 
-    <?php
+        <?php
         return ob_get_clean();
     } // Close dateBox
-
-    public function createView()
-    {
-        ob_start();
-        echo 'Startdatum <br />';
-        echo $this->timeBox("startTime");
-        echo $this->dateBox("startDate");
-
-        echo 'Einddatum <br />';
-        echo $this->timeBox("endTime");
-        echo $this->dateBox("endDate");
-        return ob_get_clean();
-    }
 }
 
 ?>

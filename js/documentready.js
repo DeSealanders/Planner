@@ -2,7 +2,9 @@ $(document).ready(function () {
     menuSetup();
     setupListOrGrid();
     setDutchTranslations();
+    eventEndDateCheckbox();
 });
+
 function menuSetup() {
     var w = $(window).width(),
         toggle = $('#toggle-menu'),
@@ -40,17 +42,30 @@ function setupListOrGrid() {
     });
 }
 
-function setDutchTranslations(){
+function setDutchTranslations() {
     $.fn.datetimepicker.dates['nl'] = {
         days: ["Zondag", "Maandag", "Dinsdag", "Woensdag", "Donderdag", "Vrijdag", "Zaterdag"],
         daysShort: ["Zon", "Maa", "Din", "Woe", "Don", "Vrij", "Zat"],
         daysMin: ["Zo", "Ma", "Di", "Wo", "Do", "Vr", "Za"],
-        months: ["Januari","Februari","Maart","April", "Mei","Juni", "Juli","Augustus","September","Oktober", "November","December"],
+        months: ["Januari", "Februari", "Maart", "April", "Mei", "Juni", "Juli", "Augustus", "September", "Oktober", "November", "December"],
         monthsShort: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
         today: "Vandaag"
     };
 }
 
+
+function eventEndDateCheckbox() {
+    $("#eventEndDateCheckbox").click(function () {
+        if ($(this).is(":checked")) {
+            $("#input-endDate").val("");
+            $("#eventEndDateText").html("Kies de tijd waarop het event eindigt");
+            $("#endDate").hide();
+        } else {
+            $("#eventEndDateText").html("Kies de datum en tijd waarop het event eindigt");
+            $("#endDate").show("fast");
+        }
+    });
+}
 
 
 

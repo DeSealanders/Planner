@@ -22,6 +22,23 @@ body {
 a {
     text-decoration: none;
 }
+h1, h2, h3, h4, h5, h6{
+    color: #101010;
+    padding: 5px 0;
+    margin: 5px 0;
+    display: block;
+}
+h1{
+    font-size: 20px;
+}
+
+h2{
+    font-size: 18px;
+}
+
+h3{
+    font-size: 14px;
+}
 
 .left {
     float: left;
@@ -80,7 +97,7 @@ a {
     border-bottom: 1px solid #EEE;
 }
 
-.list .event-name{
+.list .event-name {
     padding: 0px 10px;
     border-right: 1px solid #EEE;
     margin-right: 10px;
@@ -97,14 +114,6 @@ a {
     position: absolute;
     right: 0;
     top: 0;
-}
-
-@media screen and (max-width: 600px) {
-    .list .event-item .pull-right {
-        position: static;
-        line-height: 20px;
-        padding-bottom: 10px;
-    }
 }
 
 .list .event-location,
@@ -161,15 +170,6 @@ a {
     margin: 10px;
 }
 
-@media screen and (max-width: 600px) {
-    .grid .event-item {
-        display: block;
-        width: auto;
-        height: 150px;
-        margin: 10px auto;
-    }
-}
-
 .grid .event-name {
     display: block;
     font-size: 16px;
@@ -202,12 +202,12 @@ a {
     line-height: 20px;
 }
 
-.whiteline{
+.whiteline {
     content: '\A';
     display: block;
 }
 
-.list-seperator{
+.list-seperator {
     content: '-';
     padding: 0px 10px;
 }
@@ -217,7 +217,103 @@ a {
     font-family: 'entypo', sans-serif;
 }
 
-.event-icon{
+.event-icon {
     margin-right: 5px;
     color: #A1A1A4;
+}
+
+.addEventForm {
+    display: block;
+    max-width: 650px;
+    border: 1px solid #CBCBCE;
+    padding: 0px 10px;
+}
+
+.addEventForm h3{
+    border-top: 1px solid #E7E7E7;
+}
+
+.addEventForm h3:first-child{
+    border-top: none;
+}
+
+.startDateTime, .endDateTime {
+    display: inline-block;
+    width: 100%;
+}
+
+.startDateTime div, .endDateTime div {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+.addEventForm input {
+    width: 100%;
+}
+
+.addEventForm #eventEndDateCheckbox{
+    width: 20px;
+}
+
+.addEventForm input:hover, .addEventForm input:focus{
+    box-shadow: 0px 0px 10px #0081C9;
+    -moz-box-shadow: 0px 0px 10px #0081C9;
+}
+
+.addEventButton{
+    color: #FFF;
+    background-color: #0160AE;
+    border-color: #285E8E;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 4px;
+    margin: 10px auto;
+}
+
+.addEventButton:hover{
+    background-color: #0081C9;
+    box-shadow: 0px 0px 10px #0081C9;
+    -moz-box-shadow: 0px 0px 10px #0081C9;
+    border-color: #1b63a9;
+}
+
+.startDateTime div input, .endDateTime div input {
+    width: 75% !important;
+}
+
+@media screen and (max-width: 600px) {
+    .list .event-item .pull-right {
+        position: static;
+        line-height: 20px;
+        padding-bottom: 10px;
+    }
+
+    .grid .event-item {
+        display: block;
+        width: auto;
+        height: 150px;
+        margin: 10px auto;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .startDateTime div, .endDateTime div {
+        float: none;
+        width: 100%;
+    }
 }
