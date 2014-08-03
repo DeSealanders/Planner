@@ -192,6 +192,7 @@ h3{
     top: 5px;
 }
 
+.event-name a,
 .toolbar a {
     color: #000000;
 }

@@ -37,7 +37,7 @@ class ListView extends GeneralView
         ?>
         <li class="event-item">
 
-            <span class="toolbar grid-only">
+            <span class="toolbar">
                 <a href="add.php?event=<?php echo $event->getId(); ?>">
                     <span class="edit entypo-pencil"></span>
                 </a>
