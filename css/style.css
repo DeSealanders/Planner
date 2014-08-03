@@ -177,6 +177,20 @@ h3{
     margin: 10px;
 }
 
+.grid .toolbar {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+.grid .toolbar a {
+    color: #000000;
+}
+
+.grid .toolbar .edit {
+    padding-right: 5px;
+}
+
 .grid .event-name {
     display: block;
     font-size: 16px;
