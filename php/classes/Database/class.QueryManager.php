@@ -75,6 +75,11 @@ class QueryManager {
         return DatabaseManager::getInstance()->executeQuery($query , $params);
     }
 
+    public function getEventIds() {
+        $query = "SELECT itemid FROM events";
+        return DatabaseManager::getInstance()->executeQuery($query);
+    }
+
     /**
      * Retrieve all events
      * @return array|null
@@ -152,6 +157,11 @@ class QueryManager {
         $query = "SELECT * FROM users WHERE pagelink = ?;";
         $params = array($link);
         return DatabaseManager::getInstance()->executeQuery($query, $params);
+    }
+
+    public function getUserLinks() {
+        $query = "SELECT pagelink FROM users";
+        return DatabaseManager::getInstance()->executeQuery($query);
     }
 
 } 

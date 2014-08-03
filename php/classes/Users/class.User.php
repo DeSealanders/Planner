@@ -24,6 +24,14 @@ class User {
                 $this->$key = false;
             }
         }
+
+        // Set a pagelink if none is provided
+        if(!isset($user['pagelink']) || !$user['pagelink'] || $user['pagelink'] == '') {
+            $this->pagelink = generateRandom(7, QueryManager::getInstance()->getUserLinks());
+        }
+        else {
+            $this->pagelink = $user['pagelink'];
+        }
     }
 
     public function getName() {

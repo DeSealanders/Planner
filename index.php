@@ -16,7 +16,7 @@
         <p>Je bent niet ingelogd<br>
             Log in door je persoonlijke link te gebruiken<br>
             Een voorbeeld daarvan staat hieronder:<br>
-            <a href="index.php?pagelink=qwerty">index.php?pagelink=qwerty</a>
+            <a href="index.php?pagelink=x6fdonj">index.php?pagelink=x6fdonj</a>
         </p>
         </div>
     <?php } ?>

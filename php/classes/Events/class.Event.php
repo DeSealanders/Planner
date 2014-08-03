@@ -23,7 +23,7 @@ class Event {
 
         // Set an id if none is provided
         if(!isset($event['id']) || !$event['id'] || $event['id'] == '') {
-            $this->id = uniqid('', true);
+            $this->id = generateRandom(10, QueryManager::getInstance()->getEventIds());
         }
         else {
             $this->id = $event['id'];

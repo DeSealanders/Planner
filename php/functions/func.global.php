@@ -55,3 +55,44 @@ function isLive()
 function getAmountOfDaysInMonth($date) {
     return cal_days_in_month(CAL_GREGORIAN, date('m', strtotime($date)), date('y', strtotime($date)));
 }
+
+/**
+ * Generates a random string of a specific length
+ * @param $length desired length of the random string
+ * @param array $notIn array of items which should not be equal to the generated string
+ * @return string
+ */
+function generateRandom($length, $notIn = array()) {
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyz';
+    $randomLink = '';
+    for($i =0; $i < $length; $i++) {
+        $randomLink .= $characters[rand(0, strlen($characters)-1)];
+    }
+    if(!in_array($randomLink, flattenArray($notIn))) {
+        return $randomLink;
+    }
+    else {
+        generateRandom($length, $notIn);
+    }
+}
+
+/**
+ * Convert a multidimensional array into a single dimension array
+ * @param $array
+ * @return array
+ */
+function flattenArray($array) {
+    $flatArray = array();
+    foreach($array as $key => $value) {
+        if(is_array($value)) {
+            $value = flattenArray($value);
+        }
+        if(is_array($value)) {
+            $flatArray = array_merge($value, $flatArray);
+        }
+        else {
+            $flatArray[] = $value;
+        }
+    }
+    return $flatArray;
+}

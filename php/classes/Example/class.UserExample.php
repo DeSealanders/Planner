@@ -11,7 +11,7 @@ class UserExample {
         $userarray =
             array(
                 'userid' => $userid,
-                'pagelink' => '123456',
+                'pagelink' => false,
                 'username' => 'test',
                 'password' => 'pass',
                 'firstname' => 'test',
