@@ -39,14 +39,16 @@ class ListView extends GeneralView
 
             <span class="event-name"><?php echo $event->getName(); ?></span>
 
-            <span class="event-location"><span class="entypo-location event-icon"></span>Locatie</span>
+            <span class="event-location"><span class="entypo-location event-icon"></span>
+                <?php echo $event->getLocation(); ?>
+            </span>
 
             <div class="pull-right">
                 <span class="event-date">
-                    <span class="entypo-clock event-icon"></span><?php echo $event->getStart(); ?>
+                    <span class="entypo-clock event-icon"></span><?php echo $event->getStartDate(); ?> - <?php echo $event->getEndDate(); ?>
                     <span class="grid-only whiteline"></span>
                     <span class="list-only list-seperator"></span>
-                    <span class="entypo-clock event-icon"></span><?php echo $event->getEnd(); ?>
+                    <span class="entypo-clock event-icon"></span><?php echo $event->getStartTime(); ?> - <?php echo $event->getEndTime(); ?>
                 </span>
 
 

@@ -32,11 +32,12 @@ class QueryManager {
      * @return array|null
      */
     public function saveEvent(Event $event) {
-        $query = "INSERT INTO events (itemid, name, description, startDate, endDate, userid) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO events (itemid, name, description, location, startDate, endDate, userid) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $params = array(
             $event->getId(),
             $event->getName(),
             $event->getDescription(),
+            $event->getLocation(),
             $event->getStart(),
             $event->getEnd(),
             $event->getUserid()
@@ -61,10 +62,11 @@ class QueryManager {
      * @return array|null
      */
     public function updateEvent(Event $event) {
-        $query = "UPDATE events SET NAME = ?, description = ?, startDate = ?, endDate = ?, userid = ? WHERE itemid = ?";
+        $query = "UPDATE events SET NAME = ?, description = ?, location = ?, startDate = ?, endDate = ?, userid = ? WHERE itemid = ?";
         $params = array(
             $event->getName(),
             $event->getDescription(),
+            $event->getLocation(),
             $event->getStart(),
             $event->getEnd(),
             $event->getUserid(),

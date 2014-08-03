@@ -118,7 +118,8 @@ h3{
 
 .list .event-location,
 .list .event-description,
-.list .event-date {
+.list .event-date,
+.list .event-time {
     color: #a1a1a4;
 }
 
@@ -143,6 +144,12 @@ h3{
     padding: 0px 10px;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.list .event-time {
+    display: inline-block;
+    padding: 0px 10px;
+    white-space: nowrap;
 }
 
 .list .list-only {

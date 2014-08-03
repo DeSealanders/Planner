@@ -26,7 +26,7 @@ class EventFactory {
         $events = QueryManager::getInstance()->getEvents($period);
         if($events) {
             foreach($events as $event) {
-                $this->loadEvent($event['itemid'], $event['name'], $event['description'], $event['startDate'], $event['endDate'], $event['userid']);
+                $this->loadEvent($event['itemid'], $event['name'], $event['description'], $event['location'], $event['startDate'], $event['endDate'], $event['userid']);
             }
         }
         else {
@@ -34,11 +34,12 @@ class EventFactory {
         }
     }
 
-    public function loadEvent($id = false, $name, $description, $start, $end = false, $userid) {
+    public function loadEvent($id = false, $name, $description, $location, $start, $end = false, $userid) {
         $event = new Event(array(
             'id' => $id,
             'name' => $name,
             'description' => $description,
+            'location' => $location,
             'start' => $start,
             'end' => $end,
             'userid' => $userid

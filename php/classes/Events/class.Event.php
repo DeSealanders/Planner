@@ -5,6 +5,7 @@ class Event {
     private $id;
     private $name;
     private $description;
+    private $location;
     private $start;
     private $end;
     private $userid;
@@ -39,6 +40,10 @@ class Event {
 
     public function getDescription() {
         return $this->description;
+    }
+
+    public function getLocation() {
+        return $this->location;
     }
 
     public function getStart() {

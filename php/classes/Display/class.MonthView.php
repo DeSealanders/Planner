@@ -51,7 +51,7 @@ class MonthView extends GeneralView {
             </span>
 
             <span class="event-location">
-            Locatie
+            <?php echo $event->getLocation(); ?>
             </span>
 
             <div class="pull-right">

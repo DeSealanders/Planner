@@ -1,6 +1,7 @@
 <?php include_once("header.php"); ?>
     <?php
-    if(UserManager::getInstance()->getUser()) { ?>
+
+    if(UserManager::getInstance()->getCurrentUser()) { ?>
 
         <span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
         <span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>

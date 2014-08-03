@@ -12,6 +12,7 @@ class EventExample {
             'id' => $eventId,
             'name' => 'Taart eten',
             'description' => 'Samen gezellig de koelkast leegmaken',
+            'location' => 'Keuken',
             'start' => '2014-07-28 12:00',
             'end' => '2014-07-29 12:00',
             'userid' => 1
@@ -26,6 +27,7 @@ class EventExample {
             'id' => $eventId,
             'name' => 'Taart veroberen',
             'description' => 'Volvreten!',
+            'location' => 'De auto!',
             'start' => '2014-07-28 12:00',
             'end' => '2014-07-29 12:00',
             'userid' => 1
