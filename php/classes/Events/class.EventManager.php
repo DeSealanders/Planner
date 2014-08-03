@@ -45,4 +45,13 @@ class EventManager {
         return $this->events;
     }
 
+    public function getEvent($eventId) {
+        if(isset($this->events[$eventId])) {
+            return $this->events[$eventId];
+        }
+        else {
+            return false;
+        }
+    }
+
 } 
