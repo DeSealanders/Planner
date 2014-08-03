@@ -80,12 +80,12 @@ class QueryManager {
             if(count($period) == 2) {
 
                 // Build query using prepared statement
-                $query = "SELECT * FROM events AS e WHERE (e.startDate > ? AND e.startDate < ?) OR (e.endDate > ? AND e.endDate < ?)";
+                $query = "SELECT * FROM events AS e WHERE ((e.startDate > ? AND e.startDate < ?) OR (e.endDate > ? AND e.endDate < ?))";
                 $params = array($period[0], $period[1], $period[0], $period[1]);
 
                 // If an user is found
                 if($user = UserManager::getInstance()->getUser()) {
-                    $query .= " AND userid = ?";
+                    $query .= " AND e.userid = ?";
                     $params[] = $user->getUserId();
                 }
                 return DatabaseManager::getInstance()->executeQuery($query, $params);
