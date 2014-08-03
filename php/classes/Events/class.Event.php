@@ -45,12 +45,29 @@ class Event {
     public function getLocation() {
         return $this->location;
     }
-
-    public function getStart() {
+    /**
+     * Retrieve the starting datetime
+     * Optional: specify the datetime format
+     * @param bool $format
+     * @return bool|string
+     */
+    public function getStart($format = false) {
+        if($format) {
+            return date($format, strtotime($this->start));
+        }
         return $this->start;
     }
 
-    public function getEnd() {
+    /**
+     * Retrieve the ending datetime
+     * Optional: specify the datetime format
+     * @param bool $format
+     * @return bool|string
+     */
+    public function getEnd($format = false) {
+        if($format) {
+            return date($format, strtotime($this->end));
+        }
         return $this->end;
     }
 
