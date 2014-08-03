@@ -183,8 +183,10 @@ h3{
 }
 
 .grid .event-location,
-.grid .event-date {
+.grid .event-date,
+.grid .event-time {
     color: #a1a1a4;
+    display: block;
 }
 
 .grid .event-description {
@@ -198,6 +200,10 @@ h3{
 }
 
 .grid .event-date {
+    font-size: 12px;
+    line-height: 20px;
+}
+.grid .event-time {
     font-size: 12px;
     line-height: 20px;
 }

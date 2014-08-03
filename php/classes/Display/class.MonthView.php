@@ -25,7 +25,7 @@ class MonthView extends GeneralView {
             // Link events to the days they belong to
             $dayEvents = array();
             foreach($this->getEvents() as $event) {
-                if(date('d-m-Y',strtotime($event->getStartDate())) == $dayDate) {
+                if(date('d-m-Y',strtotime($event->getStart())) == $dayDate) {
                     $dayEvents[] = $event;
                 }
             }
@@ -58,6 +58,10 @@ class MonthView extends GeneralView {
 
                 <span class="event-date">
                 <?php echo $event->getStartDate(); ?> - <?php echo $event->getEndDate(); ?>
+                </span>
+
+                <span class="event-time">
+                <?php echo $event->getStartTime(); ?> - <?php echo $event->getEndTime(); ?>
                 </span>
 
                 <span class="event-description grid-only">

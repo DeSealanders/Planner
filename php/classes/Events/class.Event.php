@@ -53,4 +53,28 @@ class Event {
         return $this->userid;
     }
 
+    public function getStartDate() {
+        return $this->formatToDate($this->start);
+    }
+
+    public function getStartTime() {
+        return $this->formatToTime($this->start);
+    }
+
+    public function getEndDate() {
+        return $this->formatToDate($this->end);
+    }
+
+    public function getEndTime() {
+        return $this->formatToTime($this->end);
+    }
+
+    private function formatToTime($datetime) {
+        return(date('g:i', strtotime($datetime)));
+    }
+
+    private function formatToDate($datetime) {
+        return(date('d-m-Y', strtotime($datetime)));
+    }
+
 } 
