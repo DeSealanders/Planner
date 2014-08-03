@@ -19,20 +19,26 @@ class QueryManager {
         return $instance;
     }
 
+    /*
+     *
+     * ---------------------- Events ----------------------
+     *
+     *
+     */
+
     /**
      * Save a specified event
      * @param $event
      * @return array|null
      */
     public function saveEvent(Event $event) {
-        $query = "INSERT INTO events (itemid, name, description, startDate, endDate, image, userid) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO events (itemid, name, description, startDate, endDate, userid) VALUES (?, ?, ?, ?, ?, ?)";
         $params = array(
             $event->getId(),
             $event->getName(),
             $event->getDescription(),
-            $event->getStartDate(),
-            $event->getEndDate(),
-            $event->getImage(),
+            $event->getStart(),
+            $event->getEnd(),
             $event->getUserid()
         );
         return DatabaseManager::getInstance()->executeQuery($query , $params);
@@ -55,13 +61,12 @@ class QueryManager {
      * @return array|null
      */
     public function updateEvent(Event $event) {
-        $query = "UPDATE events SET NAME = ?, description = ?, startDate = ?, endDate = ?, image = ?, userid = ? WHERE itemid = ?";
+        $query = "UPDATE events SET NAME = ?, description = ?, startDate = ?, endDate = ?, userid = ? WHERE itemid = ?";
         $params = array(
             $event->getName(),
             $event->getDescription(),
-            $event->getStartDate(),
-            $event->getEndDate(),
-            $event->getImage(),
+            $event->getStart(),
+            $event->getEnd(),
             $event->getUserid(),
             $event->getId()
         );
@@ -84,7 +89,7 @@ class QueryManager {
                 $params = array($period[0], $period[1], $period[0], $period[1]);
 
                 // If an user is found
-                if($user = UserManager::getInstance()->getUser()) {
+                if($user = UserManager::getInstance()->getCurrentUser()) {
                     $query .= " AND e.userid = ?";
                     $params[] = $user->getUserId();
                 }
@@ -94,12 +99,51 @@ class QueryManager {
         // Otherwise return all events
         $query = "SELECT * FROM events";
         // If an user is found
-        if($user = UserManager::getInstance()->getUser()) {
+        if($user = UserManager::getInstance()->getCurrentUser()) {
             $query .= " WHERE userid = ?";
             $params = array($user->getUserId());
             return DatabaseManager::getInstance()->executeQuery($query, $params);
         }
         return DatabaseManager::getInstance()->executeQuery($query);
+    }
+
+    /*
+     *
+     * ---------------------- Users ----------------------
+     *
+     *
+     */
+
+    public function saveUser(User $user) {
+        $query = "INSERT INTO users (userid, pagelink, username, password, firstname, lastname, email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $params = array(
+            $user->getUserId(),
+            $user->getPagelink(),
+            $user->getUsername(),
+            $user->getPassword(),
+            $user->getFirstname(),
+            $user->getLastname(),
+            $user->getEmail()
+        );
+        return DatabaseManager::getInstance()->executeQuery($query , $params);
+    }
+    public function deleteUser($userid) {
+        $query = "DELETE FROM users WHERE userid = ?";
+        $params = array($userid);
+        return DatabaseManager::getInstance()->executeQuery($query , $params);
+    }
+    public function updateUser(User $user) {
+        $query = "UPDATE users SET pagelink = ?, username = ?, password = ?, firstname = ?, lastname = ?, email = ? WHERE userid = ?";
+        $params = array(
+            $user->getPagelink(),
+            $user->getUsername(),
+            $user->getPassword(),
+            $user->getFirstname(),
+            $user->getLastname(),
+            $user->getEmail(),
+            $user->getUserId()
+        );
+        return DatabaseManager::getInstance()->executeQuery($query , $params);
     }
 
     public function getUserByLink($link) {

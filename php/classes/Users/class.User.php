@@ -26,16 +26,36 @@ class User {
         }
     }
 
+    public function getName() {
+        return $this->firstname . ' ' . $this->lastname;
+    }
+
     public function getUserId() {
         return $this->userid;
     }
 
-    public function getUserName() {
+    public function getPagelink() {
+        return $this->pagelink;
+    }
+
+    public function getUsername() {
         return $this->username;
     }
 
-    public function getName() {
-        return $this->firstname . ' ' . $this->lastname;
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function getFirstname() {
+        return $this->firstname;
+    }
+
+    public function getLastname() {
+        return $this->lastname;
+    }
+
+    public function getEmail() {
+        return $this->email;
     }
 
 } 

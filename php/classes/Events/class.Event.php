@@ -5,25 +5,28 @@ class Event {
     private $id;
     private $name;
     private $description;
-    private $startDate;
-    private $endDate;
-    private $image;
+    private $start;
+    private $end;
     private $userid;
 
-    public function __construct($id = false, $name, $description, $startDate, $endDate = false, $image = false, $userid) {
+    public function __construct($event) {
+        // Load all found values into their respective fields
+        foreach($event as $key => $value) {
+            if(isset($value) || $value || $value != '') {
+                $this->$key = $value;
+            }
+            else {
+                $this->$key = false;
+            }
+        }
+
         // Set an id if none is provided
-        if(!$id) {
+        if(!isset($event['id']) || !$event['id'] || $event['id'] == '') {
             $this->id = uniqid('', true);
         }
         else {
-            $this->id = $id;
+            $this->id = $event['id'];
         }
-        $this->name = $name;
-        $this->description = $description;
-        $this->startDate = $startDate;
-        $this->endDate = $endDate;
-        $this->image = $image;
-        $this->userid = $userid;
     }
 
     public function getId() {
@@ -38,16 +41,12 @@ class Event {
         return $this->description;
     }
 
-    public function getStartDate() {
-        return $this->startDate;
+    public function getStart() {
+        return $this->start;
     }
 
-    public function getEndDate() {
-        return $this->endDate;
-    }
-
-    public function getImage() {
-        return $this->image;
+    public function getEnd() {
+        return $this->end;
     }
 
     public function getUserid() {

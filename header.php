@@ -28,6 +28,6 @@ require('php/config/conf.Default.php');
 
 <div class="container">
 
-        <?php if($user = UserManager::getInstance()->getUser()) { ?>
+        <?php if($user = UserManager::getInstance()->getCurrentUser()) { ?>
         <div class="user right"><p>Logged in as <span class="name"><?php echo $user->getName(); ?></span> <span class="username">(<?php echo $user->getUsername(); ?>)</span></div>
         <?php } ?>

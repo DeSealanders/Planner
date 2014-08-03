@@ -6,7 +6,7 @@
  */
 class UserManager {
 
-    private $user;
+    private $user; // the current user
     private $queryManager;
 
     public function __construct() {
@@ -35,7 +35,7 @@ class UserManager {
         }
     }
 
-    public function getUser() {
+    public function getCurrentUser() {
         return $this->user;
     }
 
