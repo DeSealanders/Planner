@@ -41,7 +41,9 @@ class ListView extends GeneralView
                 <a href="add.php?event=<?php echo $event->getId(); ?>">
                     <span class="edit entypo-pencil"></span>
                 </a>
-                <span class="delete entypo-cancel"></span>
+                <a href="delete.php?event=<?php echo $event->getId(); ?>">
+                    <span class="delete entypo-cancel"></span>
+                </a>
             </span>
 
             <span class="event-name"><?php echo $event->getName(); ?></span>

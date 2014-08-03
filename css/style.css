@@ -98,9 +98,18 @@ h3{
 }
 
 .list .event-name {
-    padding: 0px 10px;
+    padding: 0px 15px;
     border-right: 1px solid #EEE;
     margin-right: 10px;
+}
+
+.list .toolbar {
+    padding-left: 10px;
+}
+
+.list .toolbar a {
+    padding-right: 2px;
+    padding-left: 2px;
 }
 
 .list .event-item {
@@ -183,7 +192,7 @@ h3{
     top: 5px;
 }
 
-.grid .toolbar a {
+.toolbar a {
     color: #000000;
 }
 
