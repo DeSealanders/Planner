@@ -64,8 +64,14 @@ class DisplayController {
     /**
      * Retrieve form to add events and render the view
      */
-    public function renderAddEventForm(){
-        $addEventForm = new AddEventView();
+    public function renderAddEventForm($eventId = false){
+        if($eventId) {
+            $event = EventManager::getInstance()->getEvent($eventId);
+            $addEventForm = new AddEventView($event);
+        }
+        else {
+            $addEventForm = new AddEventView();
+        }
         echo $addEventForm->getHtml();
     }
 

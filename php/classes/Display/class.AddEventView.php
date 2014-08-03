@@ -8,30 +8,27 @@
  */
 class AddEventView
 {
-    public function getHtml()
-    {
-        ob_start();
-        echo $this->createView();
-        return ob_get_clean();
+
+    private $event;
+
+    public function __construct($event = false) {
+        $this->event = $event;
     }
 
-    public function createView()
+    public function getHtml()
     {
         ob_start();
         ?>
         <div class="addEventForm">
-            <h3>Naam</h3>
-            <input type="text" placeholder="Naam"></input>
 
+            <h3>Naam</h3>
+            <input type="text" placeholder="Naam" value="<?php echo $this->name; ?>"></input>
 
             <h3>Kies de datum en tijd waarop het event start</h3>
             <div class="startDateTime">
-                <?php echo $this->dateBox("startDate"); ?>
-                <?php echo $this->timeBox("startTime"); ?>
-
+                <?php echo $this->dateBox("startDate", $this->startDate); ?>
+                <?php echo $this->timeBox("startTime", $this->startTime); ?>
             </div>
-
-
 
             <input type="checkbox" id="eventEndDateCheckbox" />
             <label for="eventEndDateCheckbox" id="eventEndDateLabel">
@@ -40,15 +37,15 @@ class AddEventView
 
             <h3 id="eventEndDateText">Kies de datum en tijd waarop het event eindigt</h3>
             <div class="endDateTime">
-                <?php echo $this->dateBox("endDate"); ?>
-                <?php echo $this->timeBox("endTime"); ?>
+                <?php echo $this->dateBox("endDate", $this->endDate); ?>
+                <?php echo $this->timeBox("endTime", $this->endTime); ?>
             </div>
 
             <h3>Locatie</h3>
-            <input type="text" placeholder="Locatie"></input>
+            <input type="text" placeholder="Locatie" value="<?php echo $this->location; ?>"></input>
 
             <h3>Beschrijving</h3>
-            <input type="text" placeholder="Beschrijving"></input>
+            <input type="text" placeholder="Beschrijving" value="<?php echo $this->description; ?>"></input>
 
             <button type="submit" class="addEventButton">Opslaan</button>
 
@@ -57,13 +54,13 @@ class AddEventView
         return ob_get_clean();
     }
 
-    public function timeBox($timeID)
+    public function timeBox($timeID, $value = '')
     {
         ob_start();
         ?>
         <div id="<?php echo $timeID; ?>" class="input-append">
             <input data-format="hh:mm" type="text" placeholder="Kies een tijd" id="<?php echo 'input-' . $timeID; ?>"
-                   ></input>
+                   value="<?php echo $value; ?>"></input>
             <span class="add-on">
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"> </i>
             </span>
@@ -83,13 +80,13 @@ class AddEventView
         <?php
         return ob_get_clean();
     } // Close timeBox
-    public function dateBox($dateID)
+    public function dateBox($dateID, $value = '')
     {
         ob_start();
         ?>
         <div id="<?php echo $dateID; ?>" class="input-append">
-            <input data-format="dd-MM-yyyy" type="text" placeholder="Kies een datum"
-                   id="<?php echo 'input-' . $dateID; ?>" ></input>
+            <input data-format="dd-MM-yyyy" type="text" placeholder="Kies een datum" id="<?php echo 'input-' . $dateID; ?>"
+                   value="<?php echo $value; ?>"></input>
             <span class="add-on">
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
             </span>
@@ -111,6 +108,20 @@ class AddEventView
         <?php
         return ob_get_clean();
     } // Close dateBox
+
+    /**
+     * Override get function
+     * @param $var
+     * @return mixed|string
+     */
+    public function __get($var) {
+        if($this->event) {
+            return call_user_func(array($this->event, 'get' . $var));
+        }
+        else {
+            return '';
+        }
+    }
 }
 
 ?>
