@@ -37,7 +37,7 @@ class ListView extends GeneralView
         ?>
         <li class="event-item">
 
-            <span class="toolbar">
+            <span class="toolbar grid-only">
                 <a href="add.php?event=<?php echo $event->getId(); ?>">
                     <span class="edit entypo-pencil"></span>
                 </a>
@@ -46,7 +46,7 @@ class ListView extends GeneralView
                 </a>
             </span>
 
-            <span class="event-name"><?php echo $event->getName(); ?></span>
+            <span class="event-name"><a href="event-details.php?event=<?php echo $event->getId(); ?>"><?php echo $event->getName(); ?></a></span>
 
             <span class="event-location"><span class="entypo-location event-icon"></span>
                 <?php echo $event->getLocation(); ?>

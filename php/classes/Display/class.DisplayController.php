@@ -75,6 +75,14 @@ class DisplayController {
         echo $addEventForm->getHtml();
     }
 
+    /**
+     * Retrieve details of an event and render the view
+     */
+    public function renderDetailView($eventId){
+        $event = EventManager::getInstance()->getEvent($eventId);
+        $detailView = new DetailView($event);
+        echo $detailView->getHtml();
+    }
 
     /**
      * Retrieve events based on a period
