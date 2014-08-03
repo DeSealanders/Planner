@@ -63,7 +63,7 @@ class AddEventView
         ?>
         <div id="<?php echo $timeID; ?>" class="input-append">
             <input data-format="hh:mm" type="text" placeholder="Kies een tijd" id="<?php echo 'input-' . $timeID; ?>"
-                   readonly></input>
+                   ></input>
             <span class="add-on">
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"> </i>
             </span>
@@ -89,7 +89,7 @@ class AddEventView
         ?>
         <div id="<?php echo $dateID; ?>" class="input-append">
             <input data-format="dd-MM-yyyy" type="text" placeholder="Kies een datum"
-                   id="<?php echo 'input-' . $dateID; ?>" readonly></input>
+                   id="<?php echo 'input-' . $dateID; ?>" ></input>
             <span class="add-on">
                 <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
             </span>

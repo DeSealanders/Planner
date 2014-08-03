@@ -57,9 +57,8 @@ function setDutchTranslations() {
 function eventEndDateCheckbox() {
     $("#eventEndDateCheckbox").click(function () {
         if ($(this).is(":checked")) {
-            $("#input-endDate").val("");
             $("#eventEndDateText").html("Kies de tijd waarop het event eindigt");
-            $("#endDate").hide();
+            $("#endDate").hide("fast");
         } else {
             $("#eventEndDateText").html("Kies de datum en tijd waarop het event eindigt");
             $("#endDate").show("fast");
