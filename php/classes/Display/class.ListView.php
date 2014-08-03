@@ -45,7 +45,7 @@ class ListView extends GeneralView
 
             <div class="pull-right">
                 <span class="event-date">
-                    <span class="entypo-clock event-icon"></span><?php echo $event->getStartDate(); ?> - <?php echo $event->getEndDate(); ?>
+                    <span class="entypo-calendar event-icon"></span><?php echo $event->getStartDate(); ?> - <?php echo $event->getEndDate(); ?>
                     <span class="grid-only whiteline"></span>
                     <span class="list-only list-seperator"></span>
                     <span class="entypo-clock event-icon"></span><?php echo $event->getStartTime(); ?> - <?php echo $event->getEndTime(); ?>
