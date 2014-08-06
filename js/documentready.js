@@ -3,6 +3,66 @@ $(document).ready(function () {
     setupListOrGrid();
     setDutchTranslations();
     eventEndDateCheckbox();
+
+    //TESTING
+
+    $(function () {
+        var deleteBox = '<span class="deleteBox"><p>Are you sure you want to delete?</p><span class="cancel">Cancel</span><span class="confirm">Yes</span></span>';
+        $('.deletenew').each(function () {
+            $(this).append(deleteBox);
+        }).click(function () {
+            if (!$(this).hasClass('selected')) {
+                $(this).addClass('selected');
+                var owner = $(this);
+
+                $(this).find('.cancel').unbind('click').bind('click', function () {
+                    owner.removeClass('selected');
+                    return false;
+                })
+
+                $(this).find('.confirm').unbind('click').bind('click', function () {
+                    $(this).parent().addClass('loading');
+                    var parent = $(this).parent();
+
+                    //ajax to delete
+
+                    setTimeout(function () { //On success
+                        parent.addClass('deleted');
+                        setTimeout(function () {
+                            owner.fadeOut(600);
+
+                            //remove item deleted
+
+                            setTimeout(function () {
+                                owner.find('.deleted').removeClass('loading').removeClass('deleted');
+                                owner.removeClass('selected');
+                                $('.event-item').remove();
+                            }, 1000)
+                        }, 1000)
+                    }, 1000)
+
+                    return false;
+                })
+            }
+            return false;
+        });
+    })
+
+
+    $(window).resize(function () {
+        if ($(window).width() < 800) {
+            if ($(".events").hasClass("list")){
+                $('.events').removeClass('list').addClass('grid');
+            }
+            else {
+            }
+            $('.toggler').hide();
+        }
+        else {
+            $('.toggler').show("fast");
+        }
+
+    });
 });
 
 function menuSetup() {
@@ -40,6 +100,8 @@ function setupListOrGrid() {
             return $('.events').removeClass('grid list').addClass(toggle);
         });
     });
+
+
 }
 
 function setDutchTranslations() {
@@ -65,6 +127,8 @@ function eventEndDateCheckbox() {
         }
     });
 }
+
+
 
 
 

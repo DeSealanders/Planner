@@ -37,12 +37,14 @@ class ListView extends GeneralView
         ?>
         <li class="event-item">
 
-            <span class="toolbar">
+
+
+            <span class="toolbar pull-right">
                 <a href="add.php?event=<?php echo $event->getId(); ?>">
-                    <span class="edit entypo-pencil"></span>
+                    <span class="edit entypo-tools"></span>
                 </a>
                 <a href="delete.php?event=<?php echo $event->getId(); ?>">
-                    <span class="delete entypo-cancel"></span>
+                    <span class="delete entypo-trash deletenew"></span>
                 </a>
             </span>
 
@@ -51,6 +53,8 @@ class ListView extends GeneralView
             <span class="event-location"><span class="entypo-location event-icon"></span>
                 <?php echo $event->getLocation(); ?>
             </span>
+
+<!--            <a href="#delete" class="deletenew">Delete</a>-->
 
             <div class="pull-right">
                 <span class="event-date">
@@ -64,8 +68,6 @@ class ListView extends GeneralView
                 <span class="event-description grid-only">
                     <span class="entypo-info event-icon"></span><?php echo $event->getDescription(); ?>
                 </span>
-
-
             </div>
 
         </li>
