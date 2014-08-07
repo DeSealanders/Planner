@@ -1,12 +1,10 @@
 <?php include_once("header.php"); ?>
     <?php
-
     if(UserManager::getInstance()->getCurrentUser()) { ?>
 
-        <span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
-        <span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>
 
-        <ul class="events grid">
+        <span><a href="export.php?pagelink=<?php echo $_GET['pagelink'];?>"><p>Export</p></a></span>
+        <span><a href="import.php?pagelink=<?php echo $_GET['pagelink'];?>"><p>Import</p></a></span>
         <?php
         DisplayController::getInstance()->renderList();
         //DisplayController::getInstance()->renderMonth('27-07-2014');

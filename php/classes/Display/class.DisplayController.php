@@ -7,7 +7,7 @@
 class DisplayController {
 
     private function __construct() {
-        date_default_timezone_set('utc');
+
     }
 
     /**
@@ -52,12 +52,16 @@ class DisplayController {
         echo $yearView->getHtml();
     }
 
-
     /**
      * Retrieve events list and render the view
      */
-    public function renderList() {
-        $listView = new ListView(false, $this->getEvents(false, 'list'));
+    public function renderList($events = false) {
+        if($events) {
+            $listView = new ListView(false, $events);
+        }
+        else {
+            $listView = new ListView(false, $this->getEvents(false, 'list'));
+        }
         echo $listView->getHtml();
     }
 

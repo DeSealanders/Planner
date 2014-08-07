@@ -30,7 +30,7 @@ class EventFactory {
             }
         }
         else {
-            Throw new Exception('No events found');
+            //Throw new Exception('No events found');
         }
     }
 
@@ -67,7 +67,7 @@ class EventFactory {
         $event = new Event($event);
         EventManager::getInstance()->addEvent($event);
         QueryManager::getInstance()->saveEvent($event);
-        return $event->getId();
+        return $event;
     }
 
     /**

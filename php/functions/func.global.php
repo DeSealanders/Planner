@@ -22,6 +22,7 @@ function __autoload($className)
         'php/classes/Example/',
         'php/classes/Display/',
         'php/classes/Users/',
+        'php/classes/External/',
         'php/funtions/',
         'php/config/'
     );

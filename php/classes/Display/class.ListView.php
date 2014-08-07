@@ -20,10 +20,15 @@ class ListView extends GeneralView
     public function getHtml()
     {
         ob_start();
+        echo '<div class="togglebox">';
+        echo '<span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>';
+        echo '<span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>';
+        echo '</div><ul class="events grid">';
         foreach ($this->getEvents() as $event) {
             echo $this->getEventHtml($event);
         }
         return ob_get_clean();
+        echo '</ul>';
     }
 
     /**
