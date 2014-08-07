@@ -15,8 +15,9 @@
         <div>
         <p>Je bent niet ingelogd<br>
             Log in door je persoonlijke link te gebruiken<br>
-            Een voorbeeld daarvan staat hieronder:<br>
-            <a href="index.php?pagelink=x6fdonj">index.php?pagelink=x6fdonj</a>
+            Voorbeelden daarvan staan hieronder:<br>
+            <p><a href="index.php?pagelink=x6fdonj">Myutd4life</a></p>
+            <p><a href="index.php?pagelink=u839yk7">Baabah</a></p>
         </p>
         </div>
     <?php } ?>

@@ -9,6 +9,7 @@ require('php/config/conf.Default.php');
     <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css">
     <script src="js/bootstrap-datetimepicker.min.js"></script>
     <script src="js/documentready.js"></script>
+    <script src="js/ajaxDelete.js"></script>
 </head>
 <body>
 <nav role="navigation">

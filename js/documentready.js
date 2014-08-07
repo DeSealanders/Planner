@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     //TESTING
 
-    $(function () {
+    /*$(function () {
         var deleteBox = '<span class="deleteBox"><p>Are you sure you want to delete?</p><span class="cancel">Cancel</span><span class="confirm">Yes</span></span>';
         $('.deletenew').each(function () {
             $(this).append(deleteBox);
@@ -46,7 +46,7 @@ $(document).ready(function () {
             }
             return false;
         });
-    })
+    })*/
 
 
     $(window).resize(function () {
